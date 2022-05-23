@@ -1,0 +1,51 @@
+<html>
+<head>
+
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+ <script>
+        $(function(){
+        	$('button').click(function(){
+        		var user = $('#comment').val();
+				$.ajax({
+        			url: '/predict',
+        			data: $('form').serialize(),
+        			type: 'POST',
+        			success: function(response){
+        				console.log(response);
+        				$('#response').text( response.prediction );
+						$('#isToxic').text( response.isToxic );
+        			},
+        			error: function(error){
+        				console.log(error);
+        			}
+        		});
+        	});
+        });
+  </script>
+</head>
+</head>
+<body>
+   <div class="container">
+    <br>
+    <h3 class="text-center">TOXIC COMMENT PREDICTOR</h3>
+    <br>
+    <form>
+		<h3>ENTER <span class="label label-default">COMMENT</span></h3>
+		<textarea class="form-control" rows="3" name='comment' id='comment'></textarea>
+		<br> 
+		<button type="button" class="btn btn-outline-primary">PREDICT TOXICITY</button>
+				<br> <br> 
+		<h4 for="age">Comment Toxicity with Probability : </h4> 
+		<h4> <div id='response'></div> <div id='isToxic'></div></h4>
+    
+    </form>
+</div>
+</body>
+</html>
