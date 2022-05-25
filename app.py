@@ -10,6 +10,7 @@ import pickle
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow import keras
+from zipfile import ZipFile
 
 import nltk
 nltk.download('wordnet')
@@ -33,6 +34,9 @@ with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
     print('tokenizer loaded')
     
+with ZipFile('bi_lstm_model.zip', 'r') as zipObj:
+   # Extract all the contents of zip file in current directory
+   zipObj.extractall()  
 # loading model
 model = keras.models.load_model('bi_lstm_model.h5')  
     
