@@ -4,4 +4,3 @@ scikit-learn==1.0.1
 pandas
 gunicorn
 nltk
-tensorflow==2.8.0
