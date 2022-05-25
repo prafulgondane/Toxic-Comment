@@ -4,3 +4,4 @@ scikit-learn==1.0.1
 pandas
 gunicorn
 greeting
+greetings
