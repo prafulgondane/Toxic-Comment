@@ -4,4 +4,4 @@ scikit-learn==1.0.1
 pandas
 gunicorn
 nltk
-tensorflow-cpu==2.8.0
+tensorflow-cpu
